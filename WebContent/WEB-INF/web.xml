@@ -1,0 +1,33 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://JAVA.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>		
+	</welcome-file-list>
+	<servlet>
+		<display-name>ServerOauth</display-name>
+		<servlet-name>ServerOauth</servlet-name>
+		<servlet-class>com.msc.servlets.JwtServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServerOauth</servlet-name>
+		<url-pattern>/api/v1/generateToken</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ServerOauth</servlet-name>
+		<url-pattern>/api/v1/validateToken</url-pattern>
+	</servlet-mapping>
+	<listener>
+		<listener-class>com.msc.utils.Log4jConfigurator
+		</listener-class>
+	</listener>
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>com.msc.config.CorsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
